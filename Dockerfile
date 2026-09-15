@@ -20,4 +20,4 @@ ENV NODE_ENV=production
 
 EXPOSE 4321
 
-CMD ["node", "apps/blog/dist/server/entry.mjs"]
+CMD ["sh", "-c", "pnpm --filter blog-cms migrate --latest && node apps/blog/dist/server/entry.mjs"]
