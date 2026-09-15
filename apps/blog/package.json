@@ -1,0 +1,28 @@
+{
+  "name": "blog-cms",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "astro build",
+    "dev": "astro dev",
+    "migrate": "studiocms migrate",
+    "start": "node ./dist/server/entry.mjs"
+  },
+  "dependencies": {
+    "@astrojs/node": "^11.1.5",
+    "@effect/platform": "catalog:effect",
+    "@effect/platform-node": "catalog:effect",
+    "@studiocms/html": "workspace:^",
+    "@studiocms/md": "workspace:^",
+    "astro": "^7.3.2",
+    "effect": "catalog:effect",
+    "pg": "catalog:kysely",
+    "sharp": "^0.35.4",
+    "studiocms": "workspace:^"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
+  }
+}

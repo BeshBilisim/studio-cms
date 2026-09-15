@@ -1,0 +1,11 @@
+.git
+.github
+.astro
+.pnpm-store
+**/.astro
+**/dist
+**/node_modules
+allure-report
+allure-results
+coverage
+node_modules
