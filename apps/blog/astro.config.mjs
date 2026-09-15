@@ -13,4 +13,9 @@ export default defineConfig({
 		port: Number(process.env.PORT ?? 4321),
 	},
 	site,
+	vite: {
+		build: {
+			cssMinify: 'esbuild',
+		},
+	},
 });
