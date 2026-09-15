@@ -13,6 +13,7 @@
     "@astrojs/node": "^11.1.5",
     "@effect/platform": "catalog:effect",
     "@effect/platform-node": "catalog:effect",
+    "@studiocms/blog": "workspace:^",
     "@studiocms/html": "workspace:^",
     "@studiocms/md": "workspace:^",
     "astro": "^7.3.2",

@@ -1,3 +1,4 @@
+import blog from '@studiocms/blog';
 import html from '@studiocms/html';
 import md from '@studiocms/md';
 import { defineStudioCMSConfig } from 'studiocms/config';
@@ -7,5 +8,5 @@ export default defineStudioCMSConfig({
 	db: {
 		dialect: 'postgres',
 	},
-	plugins: [md(), html()],
+	plugins: [md(), html(), blog()],
 });
