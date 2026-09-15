@@ -1,23 +1,24 @@
-FROM node:22-bookworm-slim
+FROM node:22-bookworm-slim AS build
 
-ENV HOST=0.0.0.0 \
-    PNPM_HOME=/pnpm \
-    PORT=4321
+WORKDIR /app
 
-ENV PATH=$PNPM_HOME:$PATH
-
-WORKDIR /workspace
-
-RUN corepack enable
+COPY package.json package-lock.json ./
+RUN npm ci
 
 COPY . .
+RUN npm run build
 
-RUN pnpm install --frozen-lockfile \
-    && pnpm build:packages \
-    && pnpm --filter blog-cms build
+FROM node:22-bookworm-slim AS runtime
 
+WORKDIR /app
 ENV NODE_ENV=production
+ENV HOST=0.0.0.0
+ENV PORT=4321
+
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
+
+COPY --from=build /app/dist ./dist
 
 EXPOSE 4321
-
-CMD ["sh", "-c", "pnpm --filter blog-cms migrate --latest && node apps/blog/dist/server/entry.mjs"]
+CMD ["node", "./dist/server/entry.mjs"]
